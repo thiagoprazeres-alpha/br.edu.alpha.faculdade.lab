@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olá Mundo Web</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; }
+        input, button { font-size: 1rem; padding: 0.5rem; margin: 0.25rem; }
+        .result { margin-top: 1rem; padding: 0.75rem; border: 1px solid #ddd; background: #f9f9f9; }
+    </style>
+</head>
+<body>
+    <h1>Olá Mundo (Front + Back)</h1>
+    <p>Este exemplo usa o endpoint <code>GET /olamundo?nome=...</code> do controlador Spring Boot.</p>
+
+    <label for="nome">Nome:</label>
+    <input id="nome" type="text" value="Mundo" />
+    <button id="btnEnviar">Enviar</button>
+
+    <div class="result" id="resultado">Clique em Enviar para ver a resposta do back-end.</div>
+
+    <script>
+        document.getElementById('btnEnviar').addEventListener('click', async () => {
+            const nome = encodeURIComponent(document.getElementById('nome').value.trim() || 'Mundo');
+            const url = `/olamundo?nome=${nome}`;
+            try {
+                const res = await fetch(url, { method: 'GET' });
+                if (!res.ok) throw new Error(`HTTP ${res.status} - ${res.statusText}`);
+                const text = await res.text();
+                document.getElementById('resultado').textContent = text;
+            } catch (err) {
+                document.getElementById('resultado').textContent = 'Erro: ' + err.message;
+            }
+        });
+    </script>
+</body>
+</html>
