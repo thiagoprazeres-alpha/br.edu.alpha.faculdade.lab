@@ -20,6 +20,14 @@
 
     <div class="result" id="resultado">Clique em Enviar para ver a resposta do back-end.</div>
 
+    <form id="formObrigatorio" style="margin-top:1rem;">
+        <label for="nomeObrigatorio">Nome obrigatório:</label>
+        <input id="nomeObrigatorio" type="text" required />
+        <button type="submit">Enviar obrigatório</button>
+    </form>
+
+    <div class="result" id="resultadoObrigatorio" style="margin-top:1rem;">Teste `required=true` no endpoint.</div>
+
     <script>
         document.getElementById('btnEnviar').addEventListener('click', async () => {
             const nome = encodeURIComponent(document.getElementById('nome').value.trim() || 'Mundo');
@@ -31,6 +39,20 @@
                 document.getElementById('resultado').textContent = text;
             } catch (err) {
                 document.getElementById('resultado').textContent = 'Erro: ' + err.message;
+            }
+        });
+
+        document.getElementById('formObrigatorio').addEventListener('submit', async event => {
+            event.preventDefault();
+            const nome = document.getElementById('nomeObrigatorio').value.trim();
+            const url = `/olamundo-obrigatorio?nome=${encodeURIComponent(nome)}`;
+            try {
+                const res = await fetch(url, { method: 'GET' });
+                if (!res.ok) throw new Error(`HTTP ${res.status} - ${res.statusText}`);
+                const text = await res.text();
+                document.getElementById('resultadoObrigatorio').textContent = text;
+            } catch (err) {
+                document.getElementById('resultadoObrigatorio').textContent = 'Erro: ' + err.message;
             }
         });
     </script>

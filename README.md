@@ -27,14 +27,14 @@ Projeto de aprendizado com um exemplo mínimo de API e frontend estático.
 4. Escolha a pasta local e aguarde o clone.
 5. Abra a pasta do projeto no VS Code.
 6. No topo direito do VS Code, clique em **Run and Debug** (ícone de play com bug), escolha a configuração Java Spring Boot (ou execute `Spring Boot App`).
-7. O VS Code iniciará o servidor com Maven em background; abra `http://localhost:8080/`.
+7. O VS Code iniciará o servidor com Maven em _background_; abra `http://localhost:8080/`.
 
 ### Terminal com argumento
 
 `./mvnw spring-boot:run -Dspring-boot.run.arguments=Ana`
 - Imprime: `Olá Ana do terminal!`
 
-## Como testar endpoints
+## Como testar _endpoints_
 
 - `GET http://localhost:8080/` → exibe `index.html`
 - `GET http://localhost:8080/olamundo` → `Olá Mundo da web!`
@@ -65,20 +65,27 @@ Projeto de aprendizado com um exemplo mínimo de API e frontend estático.
 
 ---
 
-## Exercício
+## Exercícios
 
-Vamos praticar a ideia de reutilizar código:
-
-No projeto, temos duas partes que fazem quase a mesma coisa:
-- `HelloController.helloWeb()` trata a requisição web
-- `CommandLineRunner helloTerminal()` imprime no terminal
-
-As duas usam a mesma regra: se o nome não for informado, usa `"Mundo"` e monta a frase `"Olá ..."`.
+1. Conceito rápido sobre back-end:
 
 ### Pergunta:
-Explique em poucas linhas por que, do ponto de vista de **boa prática de programação** (temas que vocês já viram em Introdução e OO), seria melhor evitar essa repetição.  
-[Qual problema pode surgir se a mesma lógica for mantida em dois lugares diferentes?](https://classroom.google.com/c/Nzk0MDI5NjgxMjg1/sa/Nzk2NzU1ODg3NzYx/details)
+No contexto de uma aplicação web, qual é a principal função do back-end em relação ao cliente? 
 
-- gabarito: “repetição causa inconsistência e manutenção difícil; convém isolar a lógica em um único lugar (função/método comum), e chamar de web e terminal.”
+- gabarito: “Recebe requisições do cliente (HTTP)”
+
+2. Diferença entre invocações:
+
+### Pergunta complementar:
+No projeto, temos `HelloController` (API web) e `CommandLineRunner` (CLI). Qual é a diferença de origem das solicitações em cada caso?
+
+- gabarito esperado: “`HelloController` recebe requisições HTTP de clientes; `CommandLineRunner` é executado localmente sem requisição de cliente.”
+
+3. Comparação prático / conceitual
+
+### Pergunta:
+Quais são os riscos de manter a mesma regra de negócio duplicada em `HelloController` e em `CommandLineRunner`? Cite pelo menos dois impactos na manutenção do código.
+
+- gabarito: “repetição causa inconsistência e manutenção difícil; se precisar mudar a regra precisa alterar em dois lugares, aumentando chance de erro. Melhor isolar em um único método/componente e reutilizar.”
 
 
