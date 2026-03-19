@@ -2,6 +2,24 @@
 
 Projeto de aprendizado com um exemplo mínimo de API e frontend estático.
 
+---
+
+## Referências recomendadas
+
+### Spring Boot / API
+- Fernanda Kipper: "[CURSO DE SPRING para INICIANTES | Tutorial Completo de Java Spring](https://www.youtube.com/watch?v=YY_hf0FOIcU)" (YouTube)
+- Michelli Brito: "[Curso de Spring Boot: Criando uma aplicação Java Web](https://www.youtube.com/watch?v=OHn1jLHGptw&list=PL8iIphQOyG-DHLpEx1TPItqJamy08fs1D)" (YouTube)
+
+### HTTP / REST / Cliente-Servidor
+- Gustavo Guanabara: "[O QUE É UMA API? ENTENDA DE UMA VEZ POR TODAS](https://www.youtube.com/watch?v=TSLoQzJ-6mw)" (YouTube)
+- MDN HTTP Methods: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods
+
+### Frontend (formulário / validador / fetch)
+- MDN Forms: https://developer.mozilla.org/pt-BR/docs/Learn/Forms
+- MDN Fetch API: https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Using_Fetch
+
+---
+
 ## O que tem no projeto
 
 - `BackEndLabApplication` (Spring Boot)
