@@ -77,7 +77,7 @@ As duas usam a mesma regra: se o nome não for informado, usa `"Mundo"` e monta 
 
 ### Pergunta:
 Explique em poucas linhas por que, do ponto de vista de **boa prática de programação** (temas que vocês já viram em Introdução e OO), seria melhor evitar essa repetição.  
-Qual problema pode surgir se a mesma lógica for mantida em dois lugares diferentes?
+[Qual problema pode surgir se a mesma lógica for mantida em dois lugares diferentes?](https://classroom.google.com/c/Nzk0MDI5NjgxMjg1/sa/Nzk2NzU1ODg3NzYx/details)
 
 - gabarito: “repetição causa inconsistência e manutenção difícil; convém isolar a lógica em um único lugar (função/método comum), e chamar de web e terminal.”
 
