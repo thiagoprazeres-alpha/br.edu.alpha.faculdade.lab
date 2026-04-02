@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saudação - SSR com Thymeleaf</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; background: #f0f8ff; }
+        .container { max-width: 600px; margin: auto; padding: 1rem; background: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #333; }
+        .mensagem { font-size: 1.2rem; margin-bottom: 1rem; }
+        .usuario { font-size: 1.5rem; font-weight: bold; color: #007acc; }
+        .detalhes { margin-top: 2rem; background: #e7f3ff; padding: 1rem; border-left: 4px solid #007acc; }
+        .navegacao a { display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; text-decoration: none; color: white; border-radius: 4px; }
+        .btn-primary { background-color: #007acc; }
+        .btn-secondary { background-color: #555; margin-left: 0.5rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Saudação Thymeleaf</h1>
+        
+        <div class="mensagem" th:text="${mensagem}">
+            Olá! Esta mensagem vem do servidor.
+        </div>
+        
+        <p>O nome recebido foi:</p>
+        <div class="usuario" th:text="${nome}">
+            Mundo
+        </div>
+        
+        <div class="detalhes">
+            <h3>O que está acontecendo aqui?</h3>
+            <ul>
+                <li><strong>GET Request:</strong> O formulário enviou <code>?nome=<seu nome></code></li>
+                <li><strong>Server-Side Rendering:</strong> O Spring renderizou este HTML no servidor</li>
+                <li><strong>Thymeleaf:</strong> Substituiu <code>[[${nome}]]</code> pelo valor real</li>
+                <li><strong>Response HTML:</strong> O navegador recebeu HTML completo, não JSON</li>
+            </ul>
+        </div>
+        
+        <div class="navegacao">
+            <a href="/formulario" class="btn-primary">← Voltar ao formulário</a>
+            <a href="/" class="btn-secondary">Home</a>
+        </div>
+    </div>
+</body>
+</html>

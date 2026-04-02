@@ -18,18 +18,38 @@
   - MDN Forms: https://developer.mozilla.org/pt-BR/docs/Learn/Forms
   - MDN Fetch API: https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Using_Fetch
 
+  ### Renderização no Servidor (SSR) / Thymeleaf
+  - Spring.io: [Thymeleaf Guide](https://spring.io/guides/gs/serving-web-content/)
+  - Thymeleaf: [Documentação oficial](https://www.thymeleaf.org/)
+  - Baeldung: [Intro to Thymeleaf](https://www.baeldung.com/thymeleaf-in-spring-mvc)
+  - Thiago Prazeres: [De JSP a Thymeleaf: A volta do SSR](https://medium.com/@thiagoprazeres/de-jsp-a-thymeleaf-a-volta-do-ssr-j%C3%A1-tinha-passado-pelo-java-faz-tempo-1012bc3092a8)
+
   ---
 
   ## O que tem no projeto
 
+  ### Terminal
   - `BackEndLabApplication` (Spring Boot)
     - `CommandLineRunner helloTerminal()` imprime no console:
       - sem args: `Olá Mundo do terminal!`
       - com arg: `Olá <nome> do terminal!`
+
+  ### API REST (SPA)
   - `HelloController`:
-    - `GET /olamundo?nome=...` retorna `Olá <nome> da web!`
+    - `GET /olamundo?nome=...` retorna `Olá <nome> da web!` (JSON)
+    - `GET /olamundo-obrigatorio?nome=...` retorna com validação (JSON)
   - `src/main/resources/static/index.html`:
-    - frontend simples que consome `/olamundo` via JavaScript `fetch`
+    - Frontend SPA que consome `/olamundo` via JavaScript `fetch`
+    - Exemplo de Client-Side Rendering (CSR) com JavaScript
+
+  ### Renderização no Servidor (SSR)
+  - `ThymeleafController`:
+    - `GET /formulario` → renderiza formulário HTML no servidor
+    - `GET /saudacao?nome=...` → renderiza página de saudação com nome
+  - `src/main/resources/templates/`:
+    - `formulario.html` → template com formulário GET
+    - `saudacao.html` → template com mensagem dinâmica renderizada no servidor
+    - Exemplo de Renderização no Servidor (SSR) com Thymeleaf
 
   ## Como executar
 
@@ -54,9 +74,32 @@
 
   ## Como testar _endpoints_
 
+  ### SPA (Client-Side Rendering)
   - `GET http://localhost:8080/` → exibe `index.html`
-  - `GET http://localhost:8080/olamundo` → `Olá Mundo da web!`
-  - `GET http://localhost:8080/olamundo?nome=Thiago` → `Olá Thiago da web!`
+  - `GET http://localhost:8080/olamundo` → `Olá Mundo da web!` (JSON)
+  - `GET http://localhost:8080/olamundo?nome=Thiago` → `Olá Thiago da web!` (JSON)
+  - `GET http://localhost:8080/olamundo-obrigatorio?nome=Thiago` → `Olá Thiago da web (obrigatório)!` (JSON)
+
+  ### RSR (Renderização no Servidor com Thymeleaf)
+  - `GET http://localhost:8080/formulario` → exibe formulário HTML
+  - `GET http://localhost:8080/saudacao` → exibe saudação com nome padrão (Mundo)
+  - `GET http://localhost:8080/saudacao?nome=Thiago` → exibe saudação com nome dinâmico
+
+  ---
+
+  ## Diferenças: SPA (RSR) vs RSR (Thymeleaf)
+
+  | Aspecto | SPA (API JSON) | RSR (Thymeleaf) |
+  |---------|---|---|
+  | **Renderização** | Feita no navegador (JavaScript) | Feita no servidor (Java) |
+  | **Primeiro carregamento** | Mais lento (precisa baixar JS) | Mais rápido (HTML pronto) |
+  | **SEO** | Difícil de indexar | Fácil de indexar |
+  | **Response** | JSON | HTML completo |
+  | **Template Engine** | Nenhum (JavaScript) | Thymeleaf (Java) |
+  | **Interatividade** | Alta (JavaScript) | Baixa (recarrega página) |
+  | **Exemplo no projeto** | `/olamundo` | `/saudacao` |
+
+  > **Nota:** RSR = Renderização no Servidor (Server-Side Rendering)
 
   ## SPA (Single Page Application)
 

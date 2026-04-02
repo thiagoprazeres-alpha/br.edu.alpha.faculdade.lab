@@ -9,7 +9,7 @@ public class HelloController {
 
     @GetMapping("/olamundo")
     public String helloWeb(@RequestParam(required = false, defaultValue = "Mundo") String nome) {
-        return String.format("Olá %s da web!", nome);
+        return String.format("Oi %s da web!", nome);
     }
 
     @GetMapping("/olamundo-obrigatorio")
