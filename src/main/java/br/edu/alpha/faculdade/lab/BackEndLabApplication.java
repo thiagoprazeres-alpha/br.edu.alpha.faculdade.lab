@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Scanner;
+
 @SpringBootApplication
 public class BackEndLabApplication {
 
@@ -15,11 +17,15 @@ public class BackEndLabApplication {
 	@Bean
 	public CommandLineRunner helloTerminal() {
 		return args -> {
-			String nome = "Mundo";
-			if (args.length > 0 && args[0] != null && !args[0].isBlank()) {
-				nome = args[0];
-			}
-			System.out.println(String.format("Olá %s do terminal!", nome));
+			new Thread(() -> {
+				Scanner scanner = new Scanner(System.in);
+				System.out.print("Digite seu nome: ");
+				String nome = scanner.nextLine();
+				if (nome == null || nome.isBlank()) {
+					nome = "Mundo";
+				}
+				System.out.println(String.format("Olá %s do terminal!", nome));
+			}).start();
 		};
 	}
 
