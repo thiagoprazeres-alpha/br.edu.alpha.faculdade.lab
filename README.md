@@ -13,8 +13,9 @@
   ### HTTP / REST / Cliente-Servidor
   - Gustavo Guanabara: "[O QUE É UMA API? ENTENDA DE UMA VEZ POR TODAS](https://www.youtube.com/watch?v=TSLoQzJ-6mw)" (YouTube)
   - MDN HTTP Methods: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods
+  - Assunto: API Client com Bruno — https://www.usebruno.com/
 
-  ### Frontend (formulário / validador / fetch)
+  ### Frontend (SPA) (formulário / validador / fetch)
   - MDN Forms: https://developer.mozilla.org/pt-BR/docs/Learn/Forms
   - MDN Fetch API: https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Using_Fetch
 
